@@ -1,3 +1,6 @@
+# Reverse Engineering of the HS6620D Smart Watch
+![Watch box photo](./photos/watch.JPG)
+
 # Watch Info
 * No product name in the box or on [AliExpress](https://www.aliexpress.com/item/4000618243280.html)
 * SoC is HS6620D by [HunterSun](https://huntersun.com.cn/), now called [OnMicro](https://www.onmicro.com.cn/)
@@ -24,6 +27,8 @@
 * [How to SWD + gdb](https://wiki.seeedstudio.com/Software-SWD/)
 
 # JLink
+![SWD SoC connections](./photos/soc_closeup_annotated.png)
+![SWD connections](./photos/swd_annotated.JPG)
 ## Dumping RAM
 ```bash
 % echo "savebin ram2.bin 0x0 0x20000\n" | JLinkExe -autoconnect 1 -Device CORTEX-M3 -If SWD -Speed 4000
@@ -64,6 +69,7 @@ Cortex-M3 identified.
 Opening binary file for writing... [ram2.bin]
 Reading 131072 bytes from addr 0x00000000 into file...O.K.
 ```
+This file is available in [`dumped/ram.bin`](./dumped/ram.bin).
 
 ## Chip information registers
 From the gdb script above, register at `0x40000004` holds information about the chip
@@ -96,6 +102,7 @@ and device_version is in `0x08000034`, which seems to be `0x03`:
 ```
 
 # GDB with Python support
+Using [hs662x.gdb.py](https://github.com/fengyichui/.dotfiles/blob/master/.gdb/hs662x.gdb.py):
 ```bash
 % arm-none-eabi-gdb-py
 ```
@@ -118,3 +125,4 @@ FlashExt: None 0KB (0x000000)
   Upload... 100% (12.2s)
 Finish: flash.bin
 ```
+This file is available in [`dumped/flash.bin`](./dumped/flash.bin).
