@@ -1,5 +1,7 @@
 # Reverse Engineering of the HS6620D Smart Watch
 ![Watch box photo](./photos/watch.JPG)
+![Open photo](./photos/open2.JPG)
+![Open photo](./photos/back1.JPG)
 
 # Watch Info
 * No product name in the box or on [AliExpress](https://www.aliexpress.com/item/4000618243280.html)
@@ -31,7 +33,7 @@
 ![SWD connections](./photos/swd_annotated.JPG)
 ## Dumping RAM
 ```bash
-% echo "savebin ram2.bin 0x0 0x20000\n" | JLinkExe -autoconnect 1 -Device CORTEX-M3 -If SWD -Speed 4000
+% echo "savebin ram.bin 0x0 0x20000\n" | JLinkExe -autoconnect 1 -Device CORTEX-M3 -If SWD -Speed 4000
 SEGGER J-Link Commander V7.20 (Compiled Apr 28 2021 17:34:16)
 DLL version V7.20, compiled Apr 28 2021 17:34:09
 
